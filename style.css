@@ -1,0 +1,244 @@
+:root {
+    --main-bg-color: #f0f8ff; /* Мягкий фон */
+    --border-color: #afc4e0; /* Светлый оттенок */
+    --main-text-color: #2c3e50; /* Тёмный, но не чёрный */
+    --accent-color: #3498db; /* Яркий синий */
+    --hover-bg-color: #e6f2ff; /* Светлее фон при наведении */
+    --control-btn-size: 1.7em;
+    --border-radius: 20px;
+    --main-margin: 1%;
+    --main-padding: 1%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Более универсальный шрифт */
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
+#work-zone {
+    position: relative;
+    height: 90vh;
+    margin: var(--main-margin) 30% var(--main-margin) 30%;
+    padding: calc(var(--main-padding) * 1.5);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: white; /* Чистый белый фон */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Более выразительная тень */
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    margin: 0 0 calc(var(--main-margin) * 2) 0;
+    padding: calc(var(--main-padding) * 1.5);
+    border-bottom: 1px solid var(--border-color);
+    border-radius: calc(var(--border-radius) / 1.5);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: none;
+}
+
+.action-button {
+     background-color: var(--accent-color);
+     color: white;
+     padding: 10px 15px;
+    margin: calc(var(--main-margin) * 0.5);
+    border: none;
+     border-radius: var(--border-radius);
+     cursor: pointer;/* Изменяет курсор мыши на "указатель" при наведении (делает визуально понятно, что кнопка кликабельна). */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Анимация для плавного изменения цвета фона и трансформации (при наведении). */
+    font-size: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /*Функция ease создает плавное ускорение в начале анимации, затем замедление в середине и снова ускорение в конце, формируя плавный и "естественный" эффект.
+    •  linear: Анимация происходит с постоянной скоростью на протяжении всего времени, без ускорения и замедления. Это может выглядеть "резко".
+    •  ease-in: Анимация начинается медленно, а затем ускоряется.
+    •  ease-out: Анимация начинается быстро, а затем замедляется.
+    •  ease-in-out: Комбинация ease-in и ease-out. Анимация начинается медленно, ускоряется в середине и снова замедляется к концу.*/
+}
+
+.action-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+.sort-buttons{
+    display: flex;
+}
+
+#muzic-zone {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    margin: var(--main-margin);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    overflow: auto;
+    flex-grow: 1; /* Занимает всё доступное место */
+}
+
+#music-list {
+    padding: 0;
+    list-style: none;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+    color: var(--main-text-color);
+}
+
+.file-item:hover {/*hover - то что будет происходить при наведении*/
+    background-color: var(--hover-bg-color);
+}
+
+.file-item span {
+    flex-grow: 1;
+    margin-left: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.file-item i {
+    margin-right: 12px;
+    font-size: 1.3em;
+    color: #888;
+}
+
+.file-item.playing i {
+    color: var(--accent-color);
+}
+
+#control-panel {
+    margin: calc(var(--main-margin) * 2) var(--main-margin) var(--main-margin) var(--main-margin);
+    padding: calc(var(--main-padding) * 1.5);
+    border-top: 1px solid var(--border-color); /* Акцентный цвет для границ */
+    border-radius: calc(var(--border-radius) / 1.5);
+    text-align: center;
+    box-shadow: none;
+     display: flex;
+    flex-direction: column;
+    background: white; /* Чистый белый фон */
+}
+
+#current-track {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--main-text-color);
+}
+
+#controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.control-button {
+     background-color: transparent;
+     border: none;
+     font-size: var(--control-btn-size);
+    cursor: pointer;
+    color: var(--main-text-color);
+    transition: opacity 0.3s ease;
+}
+
+.control-button:hover {
+    opacity: 0.7;
+}
+/*•   opacity: 0: Элемент полностью прозрачен.
+•   opacity: 1: Элемент полностью непрозрачен. Это значение по умолчанию.
+•   opacity: 0.5: Элемент полупрозрачен
+•   Значения между 0 и 1 определяют степень прозрачности элемента.*/
+.sliders{
+    align-items: center;
+    display: flex;
+    gap: 10px;
+}
+/* gap устанавливает промежуток (расстояние) между строками и столбцами в grid или flexbox контейнерах.*/
+
+.sliders i {
+    font-size: 1.2em;
+}
+
+#random-button {
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--main-text-color);
+    border: 2px solid var(--main-text-color);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Добавил transform */
+    transform: translateY(0); /* Устанавливаем начальное положение */
+}
+
+#random-button:hover {
+    background-color: rgba(var(--main-text-color-rgb), 0.1);
+    transform: translateY(-3px); /* Смещаем кнопку вверх при наведении */
+}
+
+#random-button.random-on {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+
+
+
+#controls input[type="range"] {
+    width: 45%;
+    height: 8px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+}
+
+#controls input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--accent-color);
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+#controls input[type="range"]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: var(--accent-color);
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+
+@media (max-width: 768px) {
+    #work-zone {
+        margin: 1% 5% 1% 5%;
+    }
+
+   #controls input[type="range"] {
+        width: 60%;
+    }
+    .sliders{
+      flex-direction: column;
+      width: 100%;
+    }
+}
